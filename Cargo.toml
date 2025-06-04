@@ -1,0 +1,13 @@
+[package]
+authors = ["takao-h"]
+description = "PDFをMarkdownに変換するCLIツール"
+edition = "2021"
+name = "pdf2md"
+version = "0.1.0"
+
+[dependencies]
+anyhow = "1.0.77" 
+clap = {version = "4.4.12", features = ["derive"]} 
+lopdf = "0.31.0" # PDFファイル処理用
+pdf-extract = "0.7.3" # 0.7系はbytesを受け取る関数がある
+regex = "1.10.2"
