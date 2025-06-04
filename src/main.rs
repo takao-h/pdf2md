@@ -45,15 +45,12 @@ fn main() -> Result<()> {
     Ok(())
 }
 
+
 /// PDFファイルからテキスト内容を抽出する
 fn extract_pdf_content(pdf_path: &PathBuf) -> Result<String> {
-    // ファイルを読み込む
-    let data = std::fs::read(pdf_path)
-        .with_context(|| format!("PDFファイルの読み込みに失敗しました: {:?}", pdf_path))?;
-
-    // テキストの抽出
-    let text =
-        pdf_extract::extract_text(&data).with_context(|| "PDFからのテキスト抽出に失敗しました")?;
+    // テキストの抽出（直接パスを渡す）
+    let text = pdf_extract::extract_text(pdf_path)
+        .with_context(|| format!("PDFからのテキスト抽出に失敗しました: {:?}", pdf_path))?;
 
     Ok(text)
 }
